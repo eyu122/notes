@@ -1,0 +1,1301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Unit 2 — Foreign Policy & Diplomacy | Global Affairs</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=EB+Garamond:ital,wght@0,400;0,500;0,700;1,400;1,500&family=JetBrains+Mono:wght@300;400;600&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --void: #0a0c0e;
+    --deep: #0f1318;
+    --surface: #161b22;
+    --card: #1c2330;
+    --border: #2a3340;
+    --border-bright: #3d4f60;
+    --text: #c8d6e5;
+    --text-dim: #7a94a8;
+    --text-bright: #e8f2ff;
+    --gold: #d4a843;
+    --gold-dim: #8a6a20;
+    --gold-glow: rgba(212,168,67,0.15);
+    --red: #c0392b;
+    --red-dim: #7a2218;
+    --green: #27ae60;
+    --green-dim: #1a6b3c;
+    --blue: #2980b9;
+    --blue-dim: #1a4f72;
+    --accent: #e8c97a;
+    --rule: #2a3340;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'EB Garamond', Georgia, serif;
+    background: var(--void);
+    color: var(--text);
+    font-size: 17px;
+    line-height: 1.9;
+    display: flex;
+    min-height: 100vh;
+  }
+
+  /* ═══ PROGRESS BAR ═══ */
+  #prog {
+    position: fixed; top: 0; left: 0;
+    height: 2px; width: 0;
+    background: linear-gradient(90deg, var(--gold), #f5d78a, var(--gold));
+    z-index: 1000;
+    box-shadow: 0 0 12px var(--gold);
+    transition: width 0.08s linear;
+  }
+
+  /* ═══ SIDEBAR ═══ */
+  #sidebar {
+    width: 280px; min-width: 280px;
+    background: var(--deep);
+    border-right: 1px solid var(--border);
+    position: fixed; top: 0; left: 0; bottom: 0;
+    overflow-y: auto; z-index: 100;
+    display: flex; flex-direction: column;
+  }
+
+  #sidebar::-webkit-scrollbar { width: 4px; }
+  #sidebar::-webkit-scrollbar-track { background: transparent; }
+  #sidebar::-webkit-scrollbar-thumb { background: var(--border-bright); border-radius: 2px; }
+
+  .sb-head {
+    padding: 28px 22px 20px;
+    border-bottom: 1px solid var(--border);
+    background: var(--void);
+    position: sticky; top: 0; z-index: 10;
+  }
+
+  .sb-badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; font-weight: 600;
+    letter-spacing: 3px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 10px;
+    display: flex; align-items: center; gap: 8px;
+  }
+
+  .sb-badge::before {
+    content: '';
+    display: inline-block;
+    width: 24px; height: 1px;
+    background: var(--gold);
+  }
+
+  .sb-head h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 14px; font-weight: 700;
+    color: var(--text-bright);
+    line-height: 1.4;
+  }
+
+  #sidebar nav { padding: 14px 0 40px; flex: 1; }
+
+  .nav-cat {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--gold-dim);
+    padding: 18px 22px 6px;
+  }
+
+  #sidebar nav a {
+    display: block; padding: 8px 22px;
+    color: var(--text-dim); text-decoration: none;
+    font-size: 12.5px; line-height: 1.5;
+    border-left: 2px solid transparent;
+    transition: all 0.18s;
+    font-family: 'EB Garamond', serif;
+  }
+
+  #sidebar nav a:hover {
+    color: var(--accent); border-left-color: var(--gold-dim);
+    background: var(--gold-glow);
+  }
+
+  #sidebar nav a.active {
+    color: var(--accent); border-left-color: var(--gold);
+    background: var(--gold-glow); font-weight: 500;
+  }
+
+  .nav-sub {
+    padding-left: 38px !important;
+    font-size: 11.5px !important;
+    color: #4a6070 !important;
+  }
+
+  .nav-sub:hover, .nav-sub.active {
+    color: var(--text-dim) !important;
+  }
+
+  /* ═══ MAIN ═══ */
+  #main {
+    margin-left: 280px; flex: 1;
+    max-width: 920px;
+    padding: 0 56px 100px;
+  }
+
+  /* ═══ HERO ═══ */
+  #hero {
+    margin: 0 -56px;
+    padding: 80px 56px 65px;
+    background: var(--deep);
+    border-bottom: 1px solid var(--border);
+    position: relative; overflow: hidden;
+  }
+
+  #hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 80% at 80% 50%, rgba(212,168,67,0.06) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 60% at 20% 80%, rgba(41,128,185,0.05) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  #hero::after {
+    content: 'II';
+    position: absolute; right: 48px; top: 20px;
+    font-family: 'Cinzel', serif;
+    font-size: 220px; font-weight: 900;
+    color: rgba(212,168,67,0.04);
+    line-height: 1; pointer-events: none;
+    letter-spacing: -10px;
+  }
+
+  .hero-eyebrow {
+    display: flex; align-items: center; gap: 16px;
+    margin-bottom: 20px;
+  }
+
+  .hero-eyebrow .chapter-pill {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; font-weight: 600;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: var(--void);
+    background: var(--gold);
+    padding: 4px 12px; border-radius: 2px;
+  }
+
+  .hero-eyebrow .course-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 2px;
+    color: var(--text-dim); text-transform: uppercase;
+  }
+
+  #hero h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 52px; font-weight: 900;
+    color: var(--text-bright); line-height: 1.05;
+    margin-bottom: 18px;
+    text-shadow: 0 0 60px rgba(212,168,67,0.2);
+  }
+
+  #hero h1 span { color: var(--accent); }
+
+  .hero-sub {
+    font-size: 17px; color: var(--text-dim);
+    font-style: italic; max-width: 560px;
+    line-height: 1.7; margin-bottom: 30px;
+  }
+
+  .tag-bar { display: flex; flex-wrap: wrap; gap: 8px; }
+
+  .htag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 1.5px;
+    color: var(--text-dim);
+    border: 1px solid var(--border-bright);
+    padding: 4px 12px; border-radius: 2px;
+    text-transform: uppercase;
+    transition: all 0.2s;
+  }
+
+  .htag:hover { color: var(--accent); border-color: var(--gold-dim); }
+
+  /* ═══ DIVIDER ═══ */
+  .ch-div {
+    display: flex; align-items: center;
+    gap: 16px; margin: 60px 0 48px;
+  }
+
+  .ch-div::before, .ch-div::after {
+    content: ''; flex: 1;
+    height: 1px; background: var(--border);
+  }
+
+  .ch-div .cd-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; letter-spacing: 3px;
+    color: var(--gold-dim); text-transform: uppercase;
+    white-space: nowrap;
+    padding: 4px 12px;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+  }
+
+  /* ═══ SECTION TITLES ═══ */
+  .section-anchor { padding-top: 16px; }
+
+  h2.sec-title {
+    font-family: 'Cinzel', serif;
+    font-size: 30px; font-weight: 700;
+    color: var(--text-bright);
+    margin: 54px 0 10px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+  }
+
+  h2.sec-title::after {
+    content: '';
+    position: absolute; bottom: -1px; left: 0;
+    width: 60px; height: 1px;
+    background: var(--gold);
+  }
+
+  h2.sec-title .snum {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; color: var(--gold);
+    display: block; margin-bottom: 6px;
+    letter-spacing: 3px;
+  }
+
+  h3.sub-title {
+    font-family: 'Cinzel', serif;
+    font-size: 20px; font-weight: 600;
+    color: var(--text-bright);
+    margin: 38px 0 14px;
+    padding-left: 16px;
+    border-left: 3px solid var(--gold);
+  }
+
+  h4.micro {
+    font-family: 'EB Garamond', serif;
+    font-size: 19px; font-weight: 700;
+    font-style: italic; color: var(--accent);
+    margin: 28px 0 10px;
+  }
+
+  /* ═══ PROSE ═══ */
+  .prose p { margin-bottom: 18px; }
+
+  .prose > p:first-of-type::first-letter {
+    font-family: 'Cinzel', serif;
+    font-size: 62px; font-weight: 900;
+    float: left; line-height: 0.8;
+    margin: 10px 12px 0 0;
+    color: var(--gold);
+    text-shadow: 0 0 30px var(--gold-glow);
+  }
+
+  .term {
+    color: var(--accent);
+    font-style: italic;
+    border-bottom: 1px dotted var(--gold-dim);
+    cursor: help;
+  }
+
+  strong { color: var(--text-bright); font-weight: 700; }
+
+  /* ═══ CALLOUT ═══ */
+  .callout {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--gold);
+    padding: 20px 24px; margin: 26px 0;
+    border-radius: 0 4px 4px 0;
+    position: relative;
+  }
+
+  .cl-lbl {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; letter-spacing: 2.5px;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 12px; font-weight: 600;
+    display: flex; align-items: center; gap: 8px;
+  }
+
+  .cl-lbl::after {
+    content: ''; flex: 1; height: 1px;
+    background: var(--border);
+  }
+
+  .callout p { font-size: 15.5px; margin-bottom: 8px; color: var(--text); }
+  .callout p:last-child { margin-bottom: 0; }
+
+  .callout-red { border-left-color: var(--red); }
+  .callout-red .cl-lbl { color: #e74c3c; }
+
+  .callout-blue { border-left-color: var(--blue); }
+  .callout-blue .cl-lbl { color: #5dade2; }
+
+  .callout-green { border-left-color: var(--green); }
+  .callout-green .cl-lbl { color: #58d68d; }
+
+  /* ═══ DEF BOX ═══ */
+  .def-box {
+    background: var(--surface);
+    border: 1px solid var(--border-bright);
+    border-top: 3px solid var(--gold);
+    padding: 20px 24px; margin: 26px 0;
+    border-radius: 0 0 4px 4px;
+  }
+
+  .def-term {
+    font-family: 'Cinzel', serif;
+    font-size: 16px; font-weight: 600;
+    color: var(--accent); margin-bottom: 12px;
+    letter-spacing: 0.5px;
+  }
+
+  .def-box p { font-size: 15px; margin-bottom: 8px; color: var(--text); }
+  .def-box p:last-child { margin-bottom: 0; }
+
+  /* ═══ EXAMPLE BOX ═══ */
+  .ex-box {
+    background: var(--deep);
+    border: 1px solid var(--border);
+    padding: 18px 22px; margin: 22px 0;
+    border-radius: 4px; position: relative;
+  }
+
+  .ex-box::before {
+    content: 'EXAMPLE';
+    position: absolute; top: -10px; left: 16px;
+    background: var(--blue);
+    color: #fff;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8.5px; letter-spacing: 2.5px;
+    padding: 2px 10px; border-radius: 2px;
+    font-weight: 600;
+  }
+
+  .ex-box p { font-size: 15px; margin-bottom: 6px; color: var(--text); }
+  .ex-box p:last-child { margin-bottom: 0; }
+
+  /* ═══ LECTURE NOTE ═══ */
+  .lnote {
+    background: linear-gradient(135deg, var(--void), var(--deep));
+    border: 1px solid var(--gold-dim);
+    padding: 22px 26px; margin: 30px 0;
+    border-radius: 4px;
+    position: relative; overflow: hidden;
+  }
+
+  .lnote::before {
+    content: '"';
+    position: absolute; top: -10px; right: 20px;
+    font-family: 'Cinzel', serif; font-size: 100px;
+    color: rgba(212,168,67,0.07); line-height: 1;
+    pointer-events: none;
+  }
+
+  .ln-lbl {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; letter-spacing: 2.5px;
+    color: var(--gold); text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .lnote p { font-size: 15px; color: var(--text-dim); margin-bottom: 8px; }
+  .lnote p:last-child { margin-bottom: 0; }
+
+  /* ═══ 2-COL GRID ═══ */
+  .grid-2 {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 16px; margin: 26px 0;
+  }
+
+  .gcard {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-top: 3px solid;
+    padding: 18px 20px; border-radius: 0 0 4px 4px;
+  }
+
+  .gcard.gc-gold  { border-top-color: var(--gold); }
+  .gcard.gc-blue  { border-top-color: var(--blue); }
+  .gcard.gc-red   { border-top-color: var(--red); }
+  .gcard.gc-green { border-top-color: var(--green); }
+  .gcard.gc-purple{ border-top-color: #8e44ad; }
+
+  .gcard h4 {
+    font-family: 'Cinzel', serif;
+    font-size: 14.5px; font-weight: 600;
+    color: var(--text-bright); margin-bottom: 10px;
+  }
+
+  .gcard p { font-size: 14px; line-height: 1.75; margin-bottom: 0; color: var(--text); }
+
+  /* ═══ 3-COL STRIP ═══ */
+  .strip-3 {
+    display: grid; grid-template-columns: repeat(3,1fr);
+    gap: 14px; margin: 26px 0;
+  }
+
+  .scard {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 4px; overflow: hidden;
+  }
+
+  .sc-head {
+    background: var(--surface);
+    color: var(--accent);
+    font-family: 'Cinzel', serif;
+    font-weight: 600; font-size: 13px;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    letter-spacing: 0.5px;
+  }
+
+  .sc-body { padding: 12px 14px; font-size: 13.5px; line-height: 1.7; color: var(--text); }
+
+  /* ═══ TABLE ═══ */
+  .tbl { width: 100%; border-collapse: collapse; margin: 26px 0; font-size: 14px; }
+
+  .tbl thead tr { background: var(--void); }
+
+  .tbl th {
+    padding: 12px 15px; text-align: left;
+    font-family: 'Cinzel', serif; font-weight: 600;
+    font-size: 13px; color: var(--accent);
+    border-bottom: 2px solid var(--gold-dim);
+    letter-spacing: 0.3px;
+  }
+
+  .tbl td {
+    padding: 11px 15px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top; line-height: 1.65;
+    color: var(--text);
+  }
+
+  .tbl tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+  .tbl tr:hover td { background: var(--gold-glow); }
+
+  /* ═══ BLOCKQUOTE ═══ */
+  blockquote {
+    border-left: 3px solid var(--gold);
+    margin: 26px 0; padding: 16px 22px;
+    background: var(--card);
+    font-style: italic; font-size: 16px;
+    color: var(--text-dim);
+  }
+
+  blockquote cite {
+    display: block; margin-top: 12px;
+    font-style: normal;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; color: var(--gold-dim);
+    letter-spacing: 1px;
+  }
+
+  /* ═══ TIMELINE ═══ */
+  .timeline {
+    margin: 26px 0;
+    position: relative; padding-left: 0;
+  }
+
+  .tl-item {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 0; margin-bottom: 0;
+    position: relative;
+  }
+
+  .tl-item:last-child .tl-content { border-bottom: none; }
+
+  .tl-date-col {
+    padding: 22px 20px 22px 0;
+    border-right: 1px solid var(--border);
+    display: flex; flex-direction: column;
+    align-items: flex-end;
+    position: relative;
+  }
+
+  .tl-date-col::after {
+    content: '';
+    position: absolute; right: -5px; top: 28px;
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    background: var(--gold);
+    border: 2px solid var(--void);
+    box-shadow: 0 0 8px var(--gold);
+  }
+
+  .tl-era {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; color: var(--gold);
+    letter-spacing: 1px; text-align: right;
+    line-height: 1.4;
+  }
+
+  .tl-ruler {
+    font-family: 'Cinzel', serif;
+    font-size: 11px; color: var(--text-dim);
+    text-align: right; margin-top: 4px;
+    line-height: 1.3;
+  }
+
+  .tl-content {
+    padding: 20px 0 20px 24px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .tl-content h5 {
+    font-family: 'Cinzel', serif;
+    font-size: 15px; font-weight: 600;
+    color: var(--text-bright); margin-bottom: 8px;
+  }
+
+  .tl-content p { font-size: 14.5px; line-height: 1.75; margin-bottom: 0; color: var(--text); }
+
+  /* ═══ CRITERIA GRID ═══ */
+  .criteria-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px; margin: 26px 0;
+  }
+
+  .crit-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 14px 16px;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .crit-card:hover {
+    border-color: var(--gold-dim);
+    background: var(--gold-glow);
+  }
+
+  .crit-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 22px; font-weight: 600;
+    color: var(--border-bright);
+    line-height: 1; margin-bottom: 8px;
+  }
+
+  .crit-title {
+    font-family: 'Cinzel', serif;
+    font-size: 12px; font-weight: 600;
+    color: var(--accent); margin-bottom: 6px;
+    line-height: 1.3;
+  }
+
+  .crit-card p { font-size: 12.5px; color: var(--text-dim); line-height: 1.6; margin-bottom: 0; }
+
+  /* ═══ INSTRUMENT ROW ═══ */
+  .inst-row {
+    display: flex; flex-direction: column;
+    gap: 10px; margin: 26px 0;
+  }
+
+  .inst-item {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 4px; overflow: hidden;
+  }
+
+  .inst-label {
+    background: var(--surface);
+    padding: 14px 16px;
+    border-right: 1px solid var(--border);
+    font-family: 'Cinzel', serif;
+    font-size: 13px; font-weight: 600;
+    color: var(--accent);
+    display: flex; align-items: center;
+  }
+
+  .inst-body {
+    padding: 14px 18px;
+    font-size: 14px; line-height: 1.7;
+    color: var(--text);
+  }
+
+  /* ═══ BADGE ROW ═══ */
+  .badge-row { display: flex; flex-wrap: wrap; gap: 10px; margin: 20px 0; }
+
+  .badge {
+    font-family: 'Cinzel', serif;
+    font-size: 12px; font-weight: 600;
+    color: var(--void);
+    background: var(--gold);
+    padding: 5px 14px; border-radius: 2px;
+    letter-spacing: 0.3px;
+  }
+
+  /* ═══ WOLFERS PATTERN ═══ */
+  .wolfers {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px; margin: 26px 0;
+    background: var(--border);
+    border-radius: 4px; overflow: hidden;
+  }
+
+  .wolfers-card {
+    background: var(--card); padding: 20px;
+  }
+
+  .wolfers-icon {
+    font-family: 'Cinzel', serif;
+    font-size: 32px; font-weight: 900;
+    line-height: 1; margin-bottom: 10px;
+  }
+
+  .wolfers-card:nth-child(1) .wolfers-icon { color: var(--blue); }
+  .wolfers-card:nth-child(2) .wolfers-icon { color: var(--gold); }
+  .wolfers-card:nth-child(3) .wolfers-icon { color: var(--red); }
+
+  .wolfers-card h4 {
+    font-family: 'Cinzel', serif;
+    font-size: 14px; font-weight: 700;
+    color: var(--text-bright); margin-bottom: 8px;
+  }
+
+  .wolfers-card p { font-size: 13.5px; color: var(--text); line-height: 1.7; margin-bottom: 0; }
+
+  /* ═══ SUMMARY BOX ═══ */
+  .summary-box {
+    background: var(--deep);
+    border: 1px solid var(--gold-dim);
+    padding: 36px 42px; margin: 50px 0;
+    border-radius: 4px;
+    position: relative; overflow: hidden;
+  }
+
+  .summary-box::before {
+    content: '✦ SUMMARY ✦';
+    position: absolute; top: 16px; right: 24px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; letter-spacing: 4px;
+    color: var(--gold-dim); opacity: 0.5;
+  }
+
+  .summary-box h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 20px; font-weight: 700;
+    color: var(--accent); margin-bottom: 20px;
+  }
+
+  .summary-box ul { padding-left: 20px; }
+  .summary-box li { margin-bottom: 12px; font-size: 15px; line-height: 1.75; color: var(--text); }
+  .summary-box li strong { color: var(--accent); }
+
+  /* ═══ RESPONSIVE ═══ */
+  @media (max-width: 900px) {
+    #sidebar { display: none; }
+    #main { margin-left: 0; padding: 0 20px 60px; }
+    #hero { margin: 0 -20px; padding: 40px 20px 34px; }
+    #hero h1 { font-size: 34px; }
+    .grid-2, .strip-3, .wolfers { grid-template-columns: 1fr; }
+    .criteria-grid { grid-template-columns: repeat(2, 1fr); }
+    .tl-item { grid-template-columns: 80px 1fr; }
+    .inst-item { grid-template-columns: 1fr; }
+    .inst-label { border-right: none; border-bottom: 1px solid var(--border); }
+  }
+</style>
+</head>
+<body>
+
+<div id="prog"></div>
+
+<!-- SIDEBAR -->
+<aside id="sidebar">
+  <div class="sb-head">
+    <div class="sb-badge">Global Affairs Module</div>
+    <h2>Understanding Foreign Policy &amp; Diplomacy</h2>
+  </div>
+  <nav>
+    <div class="nav-cat">Unit 2 Sections</div>
+    <a href="#intro">Introduction</a>
+    <a href="#natint">2.1 — National Interest</a>
+    <a class="nav-sub" href="#defining-ni">Defining National Interest</a>
+    <a class="nav-sub" href="#criteria">8 Criteria</a>
+    <a class="nav-sub" href="#realist-ni">Realist vs. Idealist Views</a>
+    <a href="#fp">2.2 — Foreign Policy</a>
+    <a class="nav-sub" href="#defining-fp">Defining Foreign Policy</a>
+    <a class="nav-sub" href="#objectives">Policy Objectives</a>
+    <a class="nav-sub" href="#patterns">Behavioral Patterns</a>
+    <a class="nav-sub" href="#dimensions">3 Dimensions</a>
+    <a class="nav-sub" href="#instruments">Instruments</a>
+    <a href="#ethiopia">2.3 — Ethiopian Foreign Policy</a>
+    <a class="nav-sub" href="#tewodros">Tewodros II (1855–1868)</a>
+    <a class="nav-sub" href="#yohannes">Yohannes IV (1872–1889)</a>
+    <a class="nav-sub" href="#menelik">Menelik II (1889–1913)</a>
+    <a class="nav-sub" href="#haile">Haile Selassie (1916–1974)</a>
+    <a class="nav-sub" href="#derg">Military/Derg (1974–1991)</a>
+    <a class="nav-sub" href="#post1991">Post-1991 EPRDF</a>
+    <a href="#summary2">Chapter Summary</a>
+  </nav>
+</aside>
+
+<!-- MAIN CONTENT -->
+<main id="main">
+
+  <!-- HERO -->
+  <div id="hero">
+    <div class="hero-eyebrow">
+      <span class="chapter-pill">Chapter Two</span>
+      <span class="course-tag">GLAF — Global Affairs Module</span>
+    </div>
+    <h1>Foreign Policy<br/>&amp; <span>Diplomacy</span></h1>
+    <p class="hero-sub">A graduate-level lecture examining the doctrine of national interest, the theory and practice of foreign policy, the art of diplomacy, and six centuries of Ethiopia's evolving role in the world.</p>
+    <div class="tag-bar">
+      <span class="htag">National Interest</span>
+      <span class="htag">Foreign Policy</span>
+      <span class="htag">Diplomacy</span>
+      <span class="htag">Realism</span>
+      <span class="htag">Idealism</span>
+      <span class="htag">Ethiopian History</span>
+      <span class="htag">IR Theory</span>
+    </div>
+  </div>
+
+  <!-- INTRODUCTION -->
+  <div id="intro" class="section-anchor">
+    <h2 class="sec-title"><span class="snum">§ INTRODUCTION</span>Why Foreign Policy Matters to You</h2>
+    <div class="prose">
+      <p>Every day, forces shaped by foreign policy decisions made thousands of kilometers away affect your life — the price of fuel, the availability of technology, the safety of your borders, the terms of the loans funding the roads you drive on. Foreign policy is not an abstract game played by diplomats in marble halls; it is the mechanism through which states navigate a world that has no police, no global government, and no guarantee that anyone will come to your aid when you need them.</p>
+      <p>This unit asks three interlocking questions: <em>What drives states to act as they do in international relations?</em> (national interest); <em>How do states translate those drives into coherent action?</em> (foreign policy); and <em>What tools do they use to pursue their goals short of war?</em> (diplomacy and its instruments). We will then ground all of this theory in the concrete history of Ethiopian foreign policy — six regimes, six sets of challenges, and a remarkably consistent thread of core interests running through all of them.</p>
+    </div>
+  </div>
+
+  <div class="ch-div"><span class="cd-label">Section 2.1</span></div>
+
+  <!-- 2.1 NATIONAL INTEREST -->
+  <div id="natint" class="section-anchor">
+    <h2 class="sec-title"><span class="snum">§ 2.1</span>Defining National Interest</h2>
+
+    <div id="defining-ni">
+      <h3 class="sub-title">What Is National Interest?</h3>
+      <div class="prose">
+        <p>The term <span class="term">national interest</span> is simultaneously the most used and most abused concept in international relations. Politicians invoke it to justify wars, economic sanctions, humanitarian interventions, and covert operations. Critics claim it is a smokescreen for elite self-interest dressed in patriotic clothing. Academics argue over whether it can even be objectively defined. Yet for all its contested character, national interest remains the indispensable conceptual anchor of foreign policy analysis.</p>
+        <p>The Latin phrase <span class="term">raison d'état</span> — "reason of the state" — captures the essence: national interest is the justification a state offers for its actions toward other states. It is the answer to the question: <em>why is your government doing this?</em> Three foundational scholarly definitions illuminate the concept from different angles.</p>
+      </div>
+
+      <div class="def-box">
+        <div class="def-term">Three Foundational Definitions</div>
+        <p><strong>Holsti's aspirational definition:</strong> National interest is "an image of the future state of affairs and future set of conditions that governments, through individual policy makers, aspire to bring about by wielding influence abroad and by changing or sustaining the behaviors of other states." — Note how this centers the role of <em>power</em> as the instrument of realization.</p>
+        <p><strong>Seabury's normative definition:</strong> In the normative sense, national interest refers to the "set of purposes which a nation should seek to realize in the conduct of its foreign relations" — what <em>ought</em> to be pursued. This has an ethical dimension absent from purely power-based definitions.</p>
+        <p><strong>Seabury's descriptive definition:</strong> National interest may also be regarded as "those purposes which the nation through its leadership appears to pursue persistently over time" — what states <em>actually do</em> over time, stripped of official rhetoric. The analyst looks at behavior, not declarations.</p>
+      </div>
+
+      <div class="prose">
+        <p>The gulf between Seabury's normative and descriptive versions is analytically crucial. What a state says its national interest is (normative) and what its sustained behavior reveals it to actually be (descriptive) are frequently different things. States routinely frame self-serving policies in the language of universal values. Critical analysis requires watching behavior over time, not press releases.</p>
+      </div>
+
+      <div class="callout">
+        <div class="cl-lbl">The Science vs. Art Debate</div>
+        <p>Can national interest be <strong>scientifically determined</strong> — derived through rational, objective calculation of what maximizes the state's welfare? Or is it fundamentally an <strong>art</strong> — a subjective, value-laden, politically contested enterprise?</p>
+        <p>This debate traces back to <strong>Plato's philosopher-king</strong> ideal: the idea that a small group of wise, disinterested experts, trained to think in terms of the collective good, can make optimal policy decisions. Three assumptions underpin this view: (1) such wise individuals exist and can be identified; (2) they will not be corrupted by the enormous power they wield; (3) their decisions can be implemented by loyal, obedient bureaucracies.</p>
+        <p>Each assumption is problematic. Power corrupts; bureaucracies have their own interests; and "optimal" policy for whom? Plato's ideal has historically inspired authoritarian regimes — the claim that the leader alone knows the national interest and therefore needs no democratic accountability. The alternative — democratic deliberation — is messier and slower but subjects national interest definitions to public scrutiny.</p>
+      </div>
+    </div>
+
+    <div id="criteria">
+      <h3 class="sub-title">The Eight Criteria for Defining National Interest</h3>
+      <div class="prose">
+        <p>Columbis identified a range of criteria that simultaneously compete in shaping how governments define national interest. These are not theoretical ideals — they are real forces operating inside every foreign policy bureaucracy. Understanding them explains why foreign policy is rarely a clean, rational calculation of "the national good" and more often a product of competing institutional pressures, ideological commitments, personal ambitions, and historical path dependencies.</p>
+      </div>
+
+      <div class="criteria-grid">
+        <div class="crit-card">
+          <div class="crit-num">01</div>
+          <div class="crit-title">Operational Philosophy</div>
+          <p>Two styles: <strong>synoptic</strong> (bold, sweeping — assume enough information for major policy change) vs. <strong>incremental</strong> (cautious, trial-and-error — build on existing policy). Leadership personality and political circumstances determine which style dominates.</p>
+        </div>
+        <div class="crit-card">
+          <div class="crit-num">02</div>
+          <div class="crit-title">Ideological Criteria</div>
+          <p>Governments define friends and enemies through ideological lenses. During the Cold War, communist vs. capitalist ideology determined alliances. Today, liberal democracy vs. authoritarianism shapes similar alignments.</p>
+        </div>
+        <div class="crit-card">
+          <div class="crit-num">03</div>
+          <div class="crit-title">Moral &amp; Legal Criteria</div>
+          <p>Acting morally = keeping promises, respecting others' interests, avoiding exploitation. Acting legally = abiding by international law and treaty obligations. Many foreign policies are justified on moral and legal grounds — even when the real motives are strategic.</p>
+        </div>
+        <div class="crit-card">
+          <div class="crit-num">04</div>
+          <div class="crit-title">Pragmatic Criteria</div>
+          <p>Low-key, matter-of-fact, cost-benefit analysis. No moral sentimentality — act on scientific assessment of what will benefit the state. Morgenthau's preferred standard for realists. "Does it work?" replaces "Is it right?"</p>
+        </div>
+        <div class="crit-card">
+          <div class="crit-num">05</div>
+          <div class="crit-title">Professional Advancement</div>
+          <p>Officials in large bureaucracies may shape policy to serve their own career interests — "go along to get along." Conformist behavior resists new thinking. This criterion explains bureaucratic inertia: policy persists not because it works but because change threatens those who benefit from existing arrangements.</p>
+        </div>
+        <div class="crit-card">
+          <div class="crit-num">06</div>
+          <div class="crit-title">Partisan Criteria</div>
+          <p>Equating the survival of a political party, ethnic group, or religious community with national survival. Budget battles among government agencies are a classic example: each agency defines its institutional interest as the national interest. Military budgets, foreign office resources — all reflect partisan competition.</p>
+        </div>
+        <div class="crit-card">
+          <div class="crit-num">07</div>
+          <div class="crit-title">Ethnic/Racial Criteria</div>
+          <p>States may act to protect co-ethnic or co-religious populations abroad. Hungary's protection of ethnic Hungarians in neighboring states; Turkey's assertive policies regarding Turkic communities in Central Asia; Ethiopia's policies toward the Somali region.</p>
+        </div>
+        <div class="crit-card">
+          <div class="crit-num">08</div>
+          <div class="crit-title">Foreign Dependency Criteria</div>
+          <p>Post-colonial states often maintain ties of economic and security dependence on former colonial powers, limiting their foreign policy autonomy. Governments dependent on foreign aid for survival may compromise long-term national interests for immediate external support — defining national interest in terms that serve their patrons.</p>
+        </div>
+      </div>
+
+      <div class="lnote">
+        <div class="ln-lbl">Analytical Takeaway</div>
+        <p>The multiplicity of these criteria explains one of the most important observations in foreign policy analysis: <strong>national interest is not a single, objectively determinable thing.</strong> It is a product of competing wills, ambitions, motivations, and demands — domestic as much as external. When a government announces its "national interest," ask: which criteria dominated this definition? Who was in the room? Whose interests are served? Whose are excluded?</p>
+        <p>This skeptical lens does not mean national interest is meaningless — it means we should analyze it critically rather than accept official formulations at face value.</p>
+      </div>
+    </div>
+
+    <div id="realist-ni">
+      <h3 class="sub-title">Realist vs. Idealist Interpretations</h3>
+      <div class="prose">
+        <p>The most fundamental theoretical divide in defining national interest runs between the <span class="term">realist</span> and <span class="term">idealist</span> schools of international relations. Both agree that states pursue national interest. They disagree profoundly on what national interest consists of and how it should be defined.</p>
+      </div>
+
+      <div class="grid-2">
+        <div class="gcard gc-blue">
+          <h4>Realist View — Hans Morgenthau</h4>
+          <p>National interest must be defined <strong>exclusively in terms of power</strong> — the ability to control or influence others' behavior, diplomatically or through coercion. In an anarchical international system (no global government, no guarantee of protection), <strong>survival and security</strong> are the primary interests of every state. Moral, legal, and ideological considerations are dangerous distractions that produce miscalculation and catastrophe. The good diplomat — the rational diplomat — is a <em>prudent</em> diplomat: one who carefully balances aspirations against capabilities, never overreaching. National interest must be proportional to national power.</p>
+        </div>
+        <div class="gcard gc-gold">
+          <h4>Idealist View — The Liberal Response</h4>
+          <p>Idealists reject the realist separation of power from morality and law. Even the most self-interested foreign policies — declaring war, forming alliances, providing foreign aid, humanitarian intervention — are always justified on <strong>moral and legal grounds</strong>. These justifications are not mere window-dressing; they shape what policies are feasible and legitimate in international society. Furthermore, realism's exclusive focus on state interest makes it blind to cross-cutting global problems — climate change, poverty, pandemics, nuclear proliferation — that require collective, values-based international action no single state's self-interest can produce.</p>
+        </div>
+      </div>
+
+      <blockquote>
+        "The politician… asks: 'How does this policy affect the power of my country?' And we must ask the same question."
+        <cite>— Hans Morgenthau, Politics Among Nations (1948)</cite>
+      </blockquote>
+
+      <div class="callout callout-red">
+        <div class="cl-lbl">Critical Synthesis</div>
+        <p>Neither pure realism nor pure idealism fully captures the reality of foreign policy. Morgenthau himself acknowledged that <strong>prudence</strong> — the virtue he most valued — requires judgment about when moral considerations should constrain purely power-based calculations. And idealists who ignore power dynamics produce policies that are morally admirable but strategically futile. The best foreign policy analysis holds both lenses simultaneously: asking both "what is this state capable of?" and "what values should constrain how it uses that capability?"</p>
+        <p>Ethiopia's post-1991 foreign policy doctrine explicitly attempts this synthesis: it frames democracy and development as <em>strategic</em> national interests — not merely moral commitments — because a democratic, economically developed Ethiopia is also a more secure, less vulnerable Ethiopia.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="ch-div"><span class="cd-label">Section 2.2</span></div>
+
+  <!-- 2.2 FOREIGN POLICY -->
+  <div id="fp" class="section-anchor">
+    <h2 class="sec-title"><span class="snum">§ 2.2</span>Understanding Foreign Policy</h2>
+
+    <div id="defining-fp">
+      <h3 class="sub-title">2.2.1 — Defining Foreign Policy</h3>
+      <div class="prose">
+        <p>If national interest is the <em>destination</em>, foreign policy is the <em>roadmap and vehicle</em>. Foreign policy translates a state's interests — its ambitions, fears, and values in international relations — into concrete decisions, strategies, and actions directed at other states and international institutions.</p>
+      </div>
+
+      <div class="def-box">
+        <div class="def-term">Foreign Policy — Three Definitions</div>
+        <p><strong>Rochester's definition:</strong> Foreign policy refers to "the set of priorities and percepts established by national leaders to serve as guidelines for choosing among various courses of action in specific situations in international affairs." — This emphasizes the <em>decision-making framework</em> aspect.</p>
+        <p><strong>Operational definition:</strong> Foreign policy involves the general purposes, specific strategies, and concrete instruments — diplomatic, economic, and military — that states employ to achieve or promote their national interests in the international arena.</p>
+        <p><strong>Morgenthau's minimal baseline:</strong> Whatever else it aspires to, the minimum foreign policy objective of any state is <strong>survival</strong> — the preservation of physical integrity (territory), political identity (the system of government), and cultural identity (the people's ethnic, linguistic, and historical character).</p>
+      </div>
+
+      <div class="callout callout-blue">
+        <div class="cl-lbl">Key Distinction — Foreign Policy vs. Diplomacy</div>
+        <p><strong>Foreign policy</strong> is the set of goals, strategies, and decisions a state adopts to guide its external relations. It includes every instrument — war, sanctions, aid, propaganda, diplomacy.</p>
+        <p><strong>Diplomacy</strong> is one specific instrument of foreign policy — the conduct of state-to-state relations through negotiation, dialogue, and representation, without resort to force. To interact without diplomacy would limit a state's foreign policy to conflict or espionage. Diplomacy is therefore the essential peacetime machinery of foreign policy implementation.</p>
+        <p>Analogy: foreign policy is the strategy; diplomacy is the primary tactic for pursuing it peacefully.</p>
+      </div>
+    </div>
+
+    <div id="objectives">
+      <h3 class="sub-title">2.2.2 — Foreign Policy Objectives: Short, Medium &amp; Long Range</h3>
+      <div class="prose">
+        <p>Holsti classifies foreign policy objectives along a time dimension, based on three criteria: (1) the <em>value</em> placed on the objective — how central is it to national survival and identity? (2) the <em>time element</em> — when must it be achieved? (3) the <em>demands</em> it imposes on other states — how much conflict will its pursuit generate?</p>
+      </div>
+
+      <div class="strip-3">
+        <div class="scard">
+          <div class="sc-head">① Short Range — Core Values</div>
+          <div class="sc-body">
+            <p>The irreducible minimum — what a state will fight and die for. Includes: <strong>territorial integrity</strong>, <strong>political independence</strong>, <strong>preservation of the governing system</strong>, and <strong>cultural survival</strong>.</p>
+            <p style="margin-top:10px;">These are "sacrosanct" — article of faith that entire peoples accept without questioning. No amount of diplomatic or economic pressure from outside changes them. They are short-range because all other goals are meaningless if the state itself ceases to exist.</p>
+            <p style="margin-top:10px;"><em>Example:</em> For Ethiopia, territorial integrity has been a core value across every regime — from Tewodros through the EPRDF. The Adwa victory (1896) is the defining expression of this.</p>
+          </div>
+        </div>
+        <div class="scard">
+          <div class="sc-head">② Middle Range — Welfare &amp; Development</div>
+          <div class="sc-body">
+            <p>Varies dramatically by a state's development level, capabilities, and ideology. The common baseline: <strong>economic betterment</strong> — meeting domestic welfare expectations through international action.</p>
+            <p style="margin-top:10px;">No state is self-sufficient. Interdependence means satisfying domestic economic needs requires external engagement: trade, foreign aid, access to markets and technology, investment. Governments that fail to deliver economic improvement face political defeat.</p>
+            <p style="margin-top:10px;"><em>Example:</em> Ethiopia's post-1991 "economic diplomacy" — attracting FDI, seeking export markets, accessing concessional loans — is a medium-range objective pursuing domestic poverty reduction through external engagement.</p>
+          </div>
+        </div>
+        <div class="scard">
+          <div class="sc-head">③ Long Range — Systemic Vision</div>
+          <div class="sc-body">
+            <p>Plans, dreams, and visions concerning the ultimate political or ideological organization of the international system. Universal in scope — not demands against particular states but a blueprint for reordering the entire global order.</p>
+            <p style="margin-top:10px;">Only great powers have the capabilities to seriously pursue these. But smaller states also articulate long-range visions — they serve a domestic mobilizing function even if their international impact is limited. Critical caveat: visions without capabilities remain rhetoric.</p>
+            <p style="margin-top:10px;"><em>Example:</em> The Derg's vision of international socialism; the EPRDF's vision of African-led developmental democracy as an alternative to Western liberal conditionality.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="patterns">
+      <h3 class="sub-title">2.2.3 — Foreign Policy Behavior: Wolfers' Three Patterns</h3>
+      <div class="prose">
+        <p>Arnold Wolfers, one of the 20th century's leading IR scholars, argued that despite the bewildering diversity of state behavior, all foreign policy ultimately reduces to three fundamental patterns. Every foreign policy decision fits within one or a combination of these. The framework is simple, but its application is analytically powerful.</p>
+      </div>
+
+      <div class="wolfers">
+        <div class="wolfers-card">
+          <div class="wolfers-icon">▲</div>
+          <h4>Self-Preservation</h4>
+          <p><strong>Maintaining the status quo.</strong> The state seeks to preserve the existing international order because that order benefits it. Classic example: <strong>United States</strong> post-1945. American power shaped the Bretton Woods institutions (IMF, World Bank, GATT/WTO), the UN Security Council structure, and the liberal international order. Having designed the system, America defends it vigorously — any reform that dilutes American structural advantages is resisted through diplomatic pressure, sanctions, or force if necessary.</p>
+        </div>
+        <div class="wolfers-card">
+          <div class="wolfers-icon">◆</div>
+          <h4>Self-Extension</h4>
+          <p><strong>Revising the status quo in one's own favor.</strong> Rising powers seek to restructure international institutions and rules to better reflect their capabilities and interests. Example: <strong>China, India, Brazil (BRICS)</strong> — all challenging Western-designed international financial and political institutions. China's Belt and Road Initiative, the Asian Infrastructure Investment Bank, and assertive territorial claims in the South China Sea are all self-extension moves designed to expand Chinese influence in a system it did not design.</p>
+        </div>
+        <div class="wolfers-card">
+          <div class="wolfers-icon">▼</div>
+          <h4>Self-Abnegation</h4>
+          <p><strong>Revising the status quo in someone else's favor.</strong> Weak states that fail to defend their own interests and make concessions to stronger powers. The pattern of many <strong>Least Developed Countries (LDCs)</strong> — dependent on foreign aid, vulnerable to conditionality, unable to define an autonomous foreign policy. Sacrificing long-term national interest for immediate benefits (aid disbursements, debt relief) that strengthen the donor's leverage. This is the structural consequence of the foreign-dependency criterion in defining national interest.</p>
+        </div>
+      </div>
+
+      <div class="callout callout-red">
+        <div class="cl-lbl">Critical Application — Ethiopia Across Wolfers' Framework</div>
+        <p>Ethiopia's foreign policy behavior has oscillated across all three patterns depending on the era. Under Haile Selassie's alignment with the US-led Western order: partially <strong>self-preservation</strong>. Under the Derg's challenge to Western capitalist structures: partly <strong>self-extension</strong> (within a socialist alternative order). Under post-1991 "inside-out" strategy: resisting <strong>self-abnegation</strong> through deliberate prioritization of domestic capability-building over foreign-aid dependency — trying to escape the LDC structural trap.</p>
+      </div>
+    </div>
+
+    <div id="dimensions">
+      <h3 class="sub-title">2.2.4 — Foreign Policy Dimensions: Alignment, Scope &amp; Modus Operandi</h3>
+      <div class="prose">
+        <p>Beyond Wolfers' three behavioral patterns, foreign policy can be analysed along three specific dimensions that describe how states position themselves and operate in the international system. These dimensions are not static — they shift with leadership changes, capability shifts, and evolving international circumstances.</p>
+      </div>
+
+      <h4 class="micro">Dimension 1 — Alignment</h4>
+      <div class="prose">
+        <p>Alignment describes whether and with whom a state formally associates itself in international affairs. It is one of the most consequential foreign policy decisions: the choice of ally defines friends and enemies, triggers obligations, and can drag a state into conflicts it did not choose.</p>
+      </div>
+
+      <div class="strip-3">
+        <div class="scard">
+          <div class="sc-head">Alliance</div>
+          <div class="sc-body">Formal legal agreements for mutual military assistance. Benefits: pooled military resources, access to foreign bases, deterrence through collective commitment. Risks: entrapment (being dragged into an ally's conflicts); loss of autonomy; obligation to defend states whose interests may diverge from your own over time. <em>Ethiopia's US alliance under Haile Selassie (1953–1974) is a textbook alliance — base rights in exchange for military aid and security guarantee.</em></div>
+        </div>
+        <div class="scard">
+          <div class="sc-head">Neutrality</div>
+          <div class="sc-body">Formal non-partisanship — refusal to align with any bloc. Advantages: avoids generating enemies; maintains flexibility; preserves good relations with all sides. Risk: no security guarantee; if war comes, no committed protector. Switzerland is the extreme case — refused UN membership until 2002. Austria, Sweden, and Finland maintained neutrality throughout the Cold War (though the last two have since joined NATO).</div>
+        </div>
+        <div class="scard">
+          <div class="sc-head">Non-Alignment</div>
+          <div class="sc-body">The characteristic Cold War pattern of developing countries — refusing formal alignment with either the Western (NATO) or Eastern (Warsaw Pact) blocs, pursuing development and sovereignty on an independent basis. The Non-Aligned Movement (NAM), founded in 1961 (Belgrade), gave this a collective institutional form. Ethiopia was a founding member. Practical limitation: in a bipolar world, true non-alignment was nearly impossible — both superpowers applied pressure to recruit developing countries into their camps.</div>
+        </div>
+      </div>
+
+      <h4 class="micro">Dimension 2 — Scope</h4>
+      <div class="prose">
+        <p>Scope refers to the geographic reach of a state's international engagement. It is directly determined by national power and capabilities — states with greater economic and military resources can project influence further.</p>
+      </div>
+
+      <table class="tbl">
+        <thead>
+          <tr><th>Scope</th><th>Definition</th><th>Examples</th><th>Ethiopia</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Global</strong></td>
+            <td>Defines national interest in universal terms; engages regularly with states in all regions; capacity to project influence globally.</td>
+            <td>USA, China (increasingly), historically UK, Russia/USSR, France.</td>
+            <td>Not a global actor — but aspires to global influence through multilateral forums (UN, AU, IGAD).</td>
+          </tr>
+          <tr>
+            <td><strong>Regional</strong></td>
+            <td>Primary engagement with neighboring states; limited extra-regional presence except on economic issues. The dominant pattern for most states.</td>
+            <td>South Africa (sub-Saharan Africa), India (South Asia), Brazil (Latin America).</td>
+            <td><strong>Ethiopia is primarily a regional actor</strong> — the dominant power in the Horn of Africa; central to AU, IGAD, and East African peace processes.</td>
+          </tr>
+          <tr>
+            <td><strong>Isolationism</strong></td>
+            <td>Deliberate withdrawal from international engagement — military, diplomatic, and economic. Historically rare; increasingly non-viable in interdependence era.</td>
+            <td>Burma (Myanmar 1960s–70s), early USA (pre-WWI). North Korea represents the extreme contemporary case.</td>
+            <td>Never fully isolationist — geography (strategic Horn location, Nile, Red Sea access) prevents it.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h4 class="micro">Dimension 3 — Modus Operandi</h4>
+      <div class="prose">
+        <p>The mode of operation describes <em>how</em> a state pursues its goals — primarily through collective international mechanisms or primarily through its own independent action.</p>
+      </div>
+
+      <div class="grid-2">
+        <div class="gcard gc-green">
+          <h4>Multilateralism</h4>
+          <p>Seeking solutions through diplomatic forums involving multiple states — UN, AU, WTO, regional organizations. Preferred by developing countries: multilateral forums amplify collective bargaining power against stronger states. Also preferred by principle-oriented states like Germany, which uses international institutions as both a strategic tool and a normative commitment to rules-based order. Multilateralism increases legitimacy but sacrifices speed and unilateral control of outcomes.</p>
+        </div>
+        <div class="gcard gc-red">
+          <h4>Unilateralism</h4>
+          <p>Acting independently — using one's own economic and military muscle to impose outcomes. Reserved for powerful states with the capability to back their actions. The "carrot and stick" approach — using rewards and threats to reshape others' behavior without multilateral constraint. More controllable and faster than multilateralism, but lacks legitimacy and generates resistance. Classic US, Chinese, and Russian behavior on issues they consider non-negotiable.</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="instruments">
+      <h3 class="sub-title">2.2.5 — The Instruments of Foreign Policy</h3>
+      <div class="prose">
+        <p>States pursue foreign policy objectives through a spectrum of instruments, ranging from diplomatic dialogue at the peaceable end to military force at the coercive extreme. The choice of instrument depends on the objective pursued, the state's capabilities, the relationship with the target, and the international normative environment. Most sophisticated foreign policies use combinations of instruments simultaneously.</p>
+      </div>
+
+      <h4 class="micro">① Diplomacy — The Primary Instrument</h4>
+      <div class="prose">
+        <p>Diplomacy is the system of structured communication between states. Its central mechanism is <span class="term">bargaining</span> — the exchange of proposals between parties with conflicting priorities to reach mutually acceptable solutions. Bargaining always involves power, but it substitutes the costs of conflict with the costs of concession. Effective diplomacy requires genuine incompatibility of positions (if there is total agreement, there is nothing to bargain) and some minimum level of willingness to find a resolution.</p>
+        <p>The evolution of diplomacy over the 20th century:</p>
+      </div>
+
+      <div class="grid-2">
+        <div class="gcard gc-blue">
+          <h4>Old Diplomacy (Pre-WWI)</h4>
+          <p>Bilateral, secret, ambassador-centered. Two ambassadors negotiating privately, in closed rooms, representing their sovereigns. Results announced as faits accomplis. No transparency; no public accountability. Produced the system of secret alliances that turned a Balkan assassination in 1914 into a world war within six weeks. President Wilson's "Fourteen Points" (1918) explicitly attacked secret diplomacy as a cause of war.</p>
+        </div>
+        <div class="gcard gc-gold">
+          <h4>New Diplomacy (Post-WWI)</h4>
+          <p><strong>Multilateral:</strong> involving many states simultaneously in international forums (League of Nations, UN). <strong>Public:</strong> open negotiations, press coverage, civil society engagement. <strong>Summit-level:</strong> direct leader-to-leader diplomacy (US-Soviet summits, G7, G20, AU summits). <strong>Technical:</strong> specialist agencies handling health (WHO), trade (WTO), aviation (ICAO), environment (UNEP). Diplomacy is now a permanent, 24/7, multi-level enterprise, not an occasional event.</p>
+        </div>
+      </div>
+
+      <div class="callout">
+        <div class="cl-lbl">Rules of Effective Diplomacy</div>
+        <p><strong>Be realistic:</strong> Match goals to capabilities. Overreach produces humiliation and strategic failure.</p>
+        <p><strong>Be precise:</strong> Every word matters. Ambiguity in treaties creates crises later — as Ethiopia discovered with the Wuchalle Treaty's dual language problem (1889).</p>
+        <p><strong>Seek common ground:</strong> Disputes begin negotiations; common ground ends them. Every successful negotiation involves concession.</p>
+        <p><strong>Understand the other side:</strong> Appreciate opponents' constraints and perspectives even without agreeing with them. Empathy is a strategic tool, not a weakness.</p>
+        <p><strong>Be patient:</strong> Anxiety produces unnecessary concessions and signals weakness. Diplomatic time horizons are longer than electoral cycles.</p>
+        <p><strong>Leave avenues of retreat:</strong> Never trap your opponent in a corner. Even rats fight when cornered. Provide face-saving exits — this is not generosity, it is strategic wisdom.</p>
+      </div>
+
+      <h4 class="micro">② Economic Instruments</h4>
+      <div class="prose">
+        <p>Economic interdependence creates both vulnerabilities and leverage. States exploit others' economic needs to influence behavior — rewarding compliance and punishing defiance through manipulation of trade flows, investment, and financial access. Holsti identifies three purposes of economic instruments: (1) achieving any foreign policy objective by exploiting economic dependence; (2) increasing or depleting an adversary's capabilities; (3) creating economic satellites that ensure political compliance through manufactured dependency.</p>
+      </div>
+
+      <div class="inst-row">
+        <div class="inst-item">
+          <div class="inst-label">Tariffs</div>
+          <div class="inst-body">Taxes on imported goods, used to protect domestic industries or as leverage. Can be raised or lowered as an inducement or punishment. The US-China trade war (2018–present) involved escalating mutual tariffs — both states using market access as a strategic weapon.</div>
+        </div>
+        <div class="inst-item">
+          <div class="inst-label">Quotas</div>
+          <div class="inst-body">Limits on the quantity of imports allowed from a specific country in a given period. More targeted than tariffs — allows selective restriction of specific goods while maintaining other trade relationships. Combined with tariffs for maximum economic leverage.</div>
+        </div>
+        <div class="inst-item">
+          <div class="inst-label">Boycott</div>
+          <div class="inst-body">Government-organized elimination of imports from a target country — either specific commodities or the full range of that country's exports. Enforced through mandatory import licensing requirements. Historically used as collective punishment for political behavior deemed unacceptable.</div>
+        </div>
+        <div class="inst-item">
+          <div class="inst-label">Embargo</div>
+          <div class="inst-body">Prohibition on exports <em>to</em> a target country — denying it goods it needs. May cover specific strategic materials (arms, semiconductors, dual-use technology) or all goods. The US embargo on Cuba (since 1960) is one of the longest-running embargoes in history. Effectiveness depends critically on whether alternative suppliers exist.</div>
+        </div>
+        <div class="inst-item">
+          <div class="inst-label">Foreign Aid</div>
+          <div class="inst-body">Transfer of money, goods, or expertise from donor to recipient. Critically: most aid is not purely humanitarian. It serves donors' political, strategic, and economic objectives. Countries receive aid in proportion to their strategic importance, not their need (India, Egypt, Israel are large aid recipients for strategic reasons). Aid is routinely tied to political and economic reforms — donor countries use it to reshape recipient governments' domestic and foreign policies.</div>
+        </div>
+        <div class="inst-item">
+          <div class="inst-label">Military Aid</div>
+          <div class="inst-body">The oldest form of foreign assistance. Used to strengthen allies' military capabilities, reducing the need for the donor to deploy its own forces. US military aid to Ethiopia under Haile Selassie ($280 million over 23 years + training of 3,978 soldiers) enabled the emperor to suppress domestic rebellion and deter Somalia — serving American strategic interests in the Cold War Horn of Africa as much as Ethiopian security interests.</div>
+        </div>
+      </div>
+
+      <div class="callout callout-red">
+        <div class="cl-lbl">The Two Conditions for Economic Instruments to Work</div>
+        <p>Holsti argues that economic rewards and punishments only produce behavioral change in the target if two conditions are simultaneously satisfied:</p>
+        <p><strong>① Genuine need:</strong> The target must perceive a real need for the reward (or a real threat from the punishment). If the target doesn't care about what you're offering or threatening, the instrument is useless.</p>
+        <p><strong>② No alternative:</strong> The target must have no readily available alternative source of the good being withheld or no alternative market for the good being boycotted. If alternatives exist, the target simply reroutes — as Russia demonstrated after 2022 Western sanctions by redirecting trade to China, India, and the Gulf.</p>
+        <p>This explains why broad multilateral sanctions (involving many states simultaneously) are more effective than unilateral ones — they reduce the availability of alternatives.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="ch-div"><span class="cd-label">Section 2.3</span></div>
+
+  <!-- 2.3 ETHIOPIA -->
+  <div id="ethiopia" class="section-anchor">
+    <h2 class="sec-title"><span class="snum">§ 2.3</span>Overview of Ethiopian Foreign Policy: Six Eras</h2>
+    <div class="prose">
+      <p>Ethiopia's foreign policy history is one of the most instructive case studies in the world for understanding how geography, ideology, and capability interact to shape a state's behavior. With over 3,000 years of statehood, more external enemies and fewer natural friends than almost any other African state, and no colonial master's legacy to follow, Ethiopia has had to construct its foreign policy from first principles in every era. What is remarkable is not how much it has changed across regimes — but how much of its fundamental strategic logic has remained constant.</p>
+    </div>
+
+    <div class="callout">
+      <div class="cl-lbl">The Permanent Structural Determinants of Ethiopian Foreign Policy</div>
+      <p><strong>Geography:</strong> Ethiopia is a landlocked highland surrounded by Islamic neighbors with competing territorial claims. Located at the strategic crossroads of the Red Sea, Indian Ocean, and African interior, it has always attracted great-power interest — creating both opportunities for patronage and vulnerability to interference.</p>
+      <p><strong>The Nile:</strong> Ethiopia controls the source of 85% of the Nile's water (Blue Nile). Egypt's existential dependence on the Nile has shaped Egypt's approach to Ethiopian politics for centuries — a structural constant regardless of which regime governs either state.</p>
+      <p><strong>Access to the sea:</strong> Ethiopia lost its coastline when Eritrea became independent in 1993. Every regime since Menelik has grappled with the strategic and economic implications of sea access — or lack thereof. It remains unresolved.</p>
+      <p><strong>Cultural identity:</strong> An ancient Orthodox Christian state in a predominantly Muslim neighborhood. This cultural distinctiveness has shaped alliances, threat perceptions, and the framing of foreign policy across all eras.</p>
+    </div>
+
+    <div class="timeline">
+
+      <!-- TEWODROS -->
+      <div id="tewodros" class="tl-item section-anchor">
+        <div class="tl-date-col">
+          <div class="tl-era">1855–1868</div>
+          <div class="tl-ruler">Tewodros II</div>
+        </div>
+        <div class="tl-content">
+          <h5>Modernization, Christian Alliance, and Tragic Miscalculation</h5>
+          <p>Ras Kassa — Emperor Tewodros II — inherited a fragmented empire emerging from the chaotic Era of Princes. His primary external challenge was establishing recognition of Ethiopia's sovereignty and modernity on equal terms with European powers. His central foreign policy instrument was <strong>Christianity as a diplomatic tool</strong>: he appealed specifically to Britain, France, and Russia as Christian nations to assist him against the Muslim threats of Turkey and Egypt, and to help him modernize through technology and skilled manpower.</p>
+          <p style="margin-top:12px;">The strategy failed catastrophically. Britain sent religious missionaries instead of the military technology Tewodros demanded; Queen Victoria refused to receive his letters as an equal sovereign. A leader who staked his legitimacy on forcing recognition was not equipped for this rebuff. His response — taking British missionaries and the consul hostage — triggered a British military expedition. His forces were easily defeated. Unwilling to surrender, Tewodros committed suicide in 1868.</p>
+          <p style="margin-top:12px;"><strong>Lesson:</strong> The gap between capability and aspiration is a recurring danger in Ethiopian foreign policy. Tewodros's goals were legitimate; his means were disproportionate to his power. Morgenthau's warning about prudence — matching foreign policy scope to capabilities — was illustrated in reverse.</p>
+        </div>
+      </div>
+
+      <!-- YOHANNES -->
+      <div id="yohannes" class="tl-item section-anchor">
+        <div class="tl-date-col">
+          <div class="tl-era">1872–1889</div>
+          <div class="tl-ruler">Yohannes IV</div>
+        </div>
+        <div class="tl-content">
+          <h5>Double Threat: Egypt from the North, Italy from the Coast</h5>
+          <p>Yohannes IV faced a two-front strategic threat that would recur in different forms in every subsequent era: <strong>Muslim expansion</strong> (Egypt's repeated attempts to control Blue Nile sources, defeated at the battles of Gundet and Gura in 1875–76) and <strong>European colonialism</strong> (Italy acquiring the port of Massawa in 1885 — Italy's Foreign Minister framing the Red Sea as "the key to the Mediterranean").</p>
+          <p style="margin-top:12px;">His reign demonstrated a critical structural feature of Ethiopian geopolitics: every external actor in the Horn has interests that intersect Ethiopia's. The Sudanese Mahdists — anti-British rebels — invaded western Ethiopia because they suspected Yohannes of cooperating with Britain. Yohannes died fighting the Mahdists in 1889. Ethiopia was simultaneously managing Egyptian, Italian, Sudanese, and British vectors — a multi-front strategic burden that has never fully disappeared.</p>
+        </div>
+      </div>
+
+      <!-- MENELIK -->
+      <div id="menelik" class="tl-item section-anchor">
+        <div class="tl-date-col">
+          <div class="tl-era">1889–1913</div>
+          <div class="tl-ruler">Menelik II</div>
+        </div>
+        <div class="tl-content">
+          <h5>Double-Track Diplomacy and the Victory at Adwa</h5>
+          <p>Menelik II was Ethiopia's most strategically sophisticated foreign policy leader before the modern era. His challenge was the classic one: a powerful colonial adversary (Italy, which now occupied Eritrea) pressing southward into Ethiopian territory, while other colonial powers (Britain, France) surrounded the country on all sides. His response was <span class="term">double-track diplomacy</span> — simultaneously pursuing peaceful diplomatic solutions (treaties and agreements) while building military capability for the likely eventuality that diplomacy would fail.</p>
+          <p style="margin-top:12px;">The Treaty of Wuchalle (1889) with Italy appeared to offer a diplomatic settlement. But it contained a fatal ambiguity: the Amharic version made Italian mediation optional ("may use"); the Italian version made it mandatory ("shall use") — effectively placing Ethiopia under Italian protectorate. When Menelik discovered this discrepancy, he abrogated the treaty in 1893 rather than accept subordination. Italy invaded.</p>
+          <p style="margin-top:12px;">At the Battle of Adwa (1896), Ethiopian forces decisively defeated the Italian colonial army — the first decisive African military victory over a European colonial power in modern history. The strategic consequences were immediate: Britain, France, Russia, and Italy all came to Addis Ababa to establish formal ambassadorial relations. Ethiopia's boundaries with all its neighbors (except Sudan) were defined in formal treaties. Adwa transformed Ethiopia from a target of colonial partition into a recognized sovereign state — and a symbol of African independence that would inspire anticolonial movements for generations.</p>
+        </div>
+      </div>
+
+      <!-- HAILE SELASSIE -->
+      <div id="haile" class="tl-item section-anchor">
+        <div class="tl-date-col">
+          <div class="tl-era">1916–1974</div>
+          <div class="tl-ruler">Haile Selassie I</div>
+        </div>
+        <div class="tl-content">
+          <h5>The Art of Patron-Management: From the League to Washington</h5>
+          <p>Haile Selassie's foreign policy was fundamentally about securing a powerful external patron to compensate for Ethiopia's limited domestic capabilities. His approach was sophisticated patron-management: always seeking to balance dependency against autonomy, never becoming so reliant on any single power that he lost all room to maneuver.</p>
+          <p style="margin-top:12px;">His first attempt at collective security — appealing to the League of Nations after Italy's 1935 invasion — failed spectacularly. League members, prioritizing their own interests (appeasement of Mussolini), ignored their collective security obligations. But this failure taught Haile Selassie a crucial lesson: international institutions are only as reliable as the interests of their powerful members. From that point, he focused on securing bilateral commitments from the specific power best positioned to help: first Britain (to restore his throne in 1941), then the United States (to replace the British as patron after 1952).</p>
+          <p style="margin-top:12px;">The 1953 US-Ethiopia agreements were a masterclass in patron-client bargaining: Ethiopia provided the US with a critical military communications base in Eritrea; the US provided security guarantees, military aid ($280 million over 23 years), and training that enabled Haile Selassie to suppress internal revolts (Eritrean nationalism, Somali irredentism, peasant uprisings) and consolidate his personal power. His foreign policy successes — founding of the OAU (1963), peacekeeping in Korea and Congo, mediation in Sudan — were real. But his abrogation of the Eritrea federation (1962) planted the seeds of 30 years of devastating civil war.</p>
+        </div>
+      </div>
+
+      <!-- DERG -->
+      <div id="derg" class="tl-item section-anchor">
+        <div class="tl-date-col">
+          <div class="tl-era">1974–1991</div>
+          <div class="tl-ruler">Military/Derg</div>
+        </div>
+        <div class="tl-content">
+          <h5>The Soviet Patron and the Cold War Trap</h5>
+          <p>The Derg's foreign policy represented a dramatic ideological rupture but a structural continuity: the same fundamental logic of patron-dependency, now dressed in socialist ideology and oriented toward Moscow instead of Washington. The Cold War's bipolarity turned the Horn of Africa into a proxy battlefield, and Ethiopia — with its strategic location and enormous military aid needs — became one of the most heavily contested prizes.</p>
+          <p style="margin-top:12px;">The Derg's core foreign policy objectives were: (1) regime survival; (2) territorial integrity (against Eritrean secession and Somali irredentism); (3) ideological solidarity with socialist states. When the US withdrew military assistance (1977) over human rights violations, the Soviet Union stepped in with extraordinary speed and scale — reversing its previous support for Somalia to back Ethiopia, and organizing a massive Cuban military intervention that turned the tide of the Ogaden War against Somalia. The Cold War logic was explicit: both superpowers switched regional clients based on strategic calculation, not ideology or morality.</p>
+          <p style="margin-top:12px;">The regime's eventual collapse was directly linked to its patron's collapse. Without Soviet military aid following Gorbachev's strategic retreat, the Derg could no longer sustain its wars against the TPLF, EPLF, and OLF simultaneously. The lesson: structural dependence on a single patron creates catastrophic vulnerability when that patron's priorities change.</p>
+        </div>
+      </div>
+
+      <!-- POST 1991 -->
+      <div id="post1991" class="tl-item section-anchor">
+        <div class="tl-date-col">
+          <div class="tl-era">Post-1991</div>
+          <div class="tl-ruler">EPRDF &amp; Beyond</div>
+        </div>
+        <div class="tl-content">
+          <h5>The "Inside-Out" Doctrine: Building Power from Within</h5>
+          <p>The EPRDF drew a precise lesson from its predecessors' failures: patron-dependency produced not security but vulnerability. Haile Selassie fell when US support proved insufficient to suppress domestic discontent. The Derg fell when Soviet support evaporated. The pattern was clear: external support substituted for domestic legitimacy and capability, but it could always be withdrawn.</p>
+          <p style="margin-top:12px;">The post-1991 foreign policy doctrine inverted the traditional logic — <span class="term">"inside-out"</span> rather than "outside-in." The core argument: Ethiopia's real vulnerabilities are domestic — poverty, lack of democracy, governance failures, ethnic tension. Addressing these through internal development and political reform would reduce Ethiopia's vulnerability to external threats more effectively than any military alliance or foreign patron. A prosperous, democratic, internally stable Ethiopia would generate its own strategic weight without depending on outside powers.</p>
+          <p style="margin-top:12px;"><strong>Economic diplomacy</strong> — attracting foreign investment, seeking export markets, accessing concessional financing — was adopted as the primary external instrument. This was framed not as dependency (like foreign aid) but as Ethiopia actively exploiting globalization's opportunities from a position of domestic strength. The "East-look" policy (learning from Asian developmental state models — Singapore, Malaysia, Indonesia) reflected the doctrine's logic: internalize best practices, build self-reliant capability, reduce conditionality-based vulnerability.</p>
+          <p style="margin-top:12px;"><strong>Regional leadership</strong> — through IGAD, the AU, and peacekeeping deployments (Somalia) — was pursued both as a national interest (regional stability reduces threats to Ethiopia) and as a way of building international influence disproportionate to Ethiopia's economic capabilities. Addis Ababa's role as the AU headquarters, and the FDRE's consistently active role in African diplomacy, reflect this strategy.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="callout callout-green">
+      <div class="cl-lbl">Changes and Continuities Across All Six Eras</div>
+      <p><strong>Unbroken continuity:</strong> Territorial integrity has been the first-priority core value for every regime. All six governments were willing to commit maximum military and diplomatic resources to defend Ethiopia's territorial integrity. The Adwa victory remains the symbolic touchstone — the proof that this commitment can succeed.</p>
+      <p><strong>Unbroken structural determinant:</strong> Geography. The Nile, the Red Sea, the strategic Horn location, and the pattern of Muslim-majority neighbors have shaped every regime's threat environment regardless of its ideology. As the module states: "Geography is the determining factor in the foreign policy of Ethiopia."</p>
+      <p><strong>Change in strategy:</strong> The Imperial and Derg regimes followed an "outside-in" patron-seeking strategy. Post-1991 doctrine inverted this to "inside-out" capability-building. Whether this strategic shift proves durable — especially given the post-2018 political crisis and internal conflict — is the central question for contemporary Ethiopian foreign policy analysis.</p>
+    </div>
+  </div>
+
+  <div class="ch-div"><span class="cd-label">Summary</span></div>
+
+  <!-- SUMMARY -->
+  <div id="summary2" class="section-anchor">
+    <div class="summary-box">
+      <h3>Chapter Summary — What You Should Now Master</h3>
+      <ul>
+        <li><strong>National interest</strong> is the raison d'état — the set of values, goals, and orientations a state pursues internationally. It is simultaneously a normative ideal (what should be pursued), a descriptive reality (what is actually pursued over time), and a contested political product of eight competing criteria: operational philosophy, ideological, moral/legal, pragmatic, professional advancement, partisan, ethnic/racial, and foreign dependency.</li>
+        <li><strong>Realists (Morgenthau)</strong> define national interest exclusively as power and survival, demanding prudence in matching aspirations to capabilities. <strong>Idealists</strong> insist moral, legal, and ideological criteria are legitimate and necessary components of national interest, especially for addressing global collective-action problems no state can solve alone.</li>
+        <li><strong>Foreign policy</strong> translates national interest into concrete goals, strategies, and instruments. Objectives are classified as short-range (core values/survival), middle-range (economic welfare/development), and long-range (systemic/ideological vision). Foreign policy behavior follows Wolfers' three patterns: self-preservation (defending the status quo), self-extension (revising it in one's favor), and self-abnegation (conceding to stronger powers).</li>
+        <li><strong>Foreign policy dimensions</strong> are analyzed across alignment (alliance, neutrality, non-alignment), scope (global, regional, isolationism), and modus operandi (multilateralism vs. unilateralism).</li>
+        <li><strong>Instruments of foreign policy</strong> range from diplomacy (bargaining, negotiation, summitry) through economic tools (tariffs, quotas, boycotts, embargoes, loans, foreign aid, military aid) to force. Effective economic instruments require both genuine need in the target and absence of alternatives — conditions that unilateral sanctions rarely achieve.</li>
+        <li><strong>Ethiopia's foreign policy</strong> reveals remarkable structural continuity across six very different regimes: territorial integrity as the unbreakable core value; the Nile, the sea, and geography as permanent structural determinants; and a recurring struggle to convert diplomatic skill into actual capability against more powerful external actors. The post-1991 "inside-out" doctrine represents the most theoretically coherent attempt to escape the patron-dependency trap through domestic capability-building.</li>
+      </ul>
+    </div>
+
+    <div class="callout callout-gold">
+      <div class="cl-lbl">Essay Questions for Examination</div>
+      <p>① Explain Columbis's eight criteria for defining national interest. Using two specific examples from Ethiopia's foreign policy history, show how different criteria have dominated at different times.</p>
+      <p>② Compare and contrast the realist and idealist approaches to national interest. Which do you find more analytically useful for understanding the behavior of a developing state like Ethiopia? Justify your answer with evidence.</p>
+      <p>③ Using Wolfers' three-pattern framework, analyse the foreign policy behavior of (a) the USA post-1945, (b) China today, and (c) Ethiopia under the Derg. What determines which pattern a state follows?</p>
+      <p>④ "Diplomatic success requires realistic goals, patience, and leaving your opponent an avenue of retreat." Evaluate this claim with reference to Ethiopia's diplomacy under Menelik II and the contrast with Tewodros II.</p>
+      <p>⑤ What are the conditions under which economic instruments of foreign policy are effective? Illustrate your answer with reference to the US-China trade war and Ethiopia's experience with foreign aid conditionality.</p>
+      <p>⑥ Identify the permanent structural determinants of Ethiopian foreign policy. To what extent can ideological shifts (Imperial → socialist → developmental democratic) change a state's fundamental foreign policy interests?</p>
+    </div>
+
+    <div class="prose">
+      <p>Diplomacy in the modern era — what historian John Lewis Gaddis called the "long peace" (the absence of great-power war since 1945) — has never been more complex or more consequential. Every challenge that defines the human future, from climate change to pandemic preparedness, nuclear proliferation to global inequality, requires the kind of structured, patient, multi-party communication that diplomacy provides. Understanding foreign policy is therefore not merely an academic exercise. It is the precondition for participating as an informed, critical citizen in the decisions your state makes about how to engage with a world that is more interconnected, and therefore more dangerous and more promising, than any previous generation has known.</p>
+    </div>
+  </div>
+
+</main>
+
+<script>
+  // Progress bar
+  window.addEventListener('scroll', () => {
+    const pct = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+    document.getElementById('prog').style.width = Math.min(pct, 100) + '%';
+  });
+
+  // Active nav
+  const anchors = document.querySelectorAll('.section-anchor');
+  const links = document.querySelectorAll('#sidebar nav a');
+
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id));
+      }
+    });
+  }, { rootMargin: '-15% 0px -72% 0px' });
+
+  anchors.forEach(a => io.observe(a));
+</script>
+</body>
+</html>
